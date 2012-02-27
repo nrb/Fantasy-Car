@@ -1,8 +1,13 @@
 # Django settings for fantasy_car_project project.
 
 import os
+import sys
+
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+APPS_ROOT = os.path.join(PROJECT_ROOT, "apps")
+
+sys.path.insert(0, APPS_ROOT)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -130,6 +135,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    
+    # project
+    'league',
 )
 
 # A sample logging configuration. The only tangible logging
