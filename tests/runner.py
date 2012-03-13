@@ -30,6 +30,7 @@ class DiscoveryRunner(DjangoTestSuiteRunner):
             suite = defaultTestLoader.discover(
                 discovery_root,
                 top_level_dir=settings.BASE_PATH,
+                pattern="*_test.py",
                 )
 
         if extra_tests:
