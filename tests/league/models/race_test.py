@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from tests.league.factories import RaceFactory, TrackFactory, SeasonFactory, SeasonFactory
+from tests.league.factories import RaceFactory, TrackFactory, SeasonFactory, RaceParticipantFactory
 
 class RaceTest(TestCase):
     def test_create_race(self):
@@ -25,4 +25,12 @@ class RaceTest(TestCase):
         race = RaceFactory()
         
         assert race.season
+        
+    def test_race_has_winner(self):
+        race = RaceFactory()
+        
+        participant = RaceParticipantFactory(race=race)
+        
+        
+        assert race.winner == participant.driver
 

@@ -2,7 +2,7 @@ from datetime import date
 
 import factory
 
-from league.models import Season, Track, Race
+from league.models import Season, Track, Race, Driver, RaceParticipant
 
 class SeasonFactory(factory.Factory):
     FACTORY_FOR = Season
@@ -16,6 +16,13 @@ class TrackFactory(factory.Factory):
     city = "Daytona, FL"
     length = 1.5
 
+    
+class DriverFactory(factory.Factory):
+    FACTORY_FOR = Driver
+    
+    name = "Jimmie Johnson"
+    number = 48
+
 class RaceFactory(factory.Factory):
     FACTORY_FOR = Race
     
@@ -24,6 +31,14 @@ class RaceFactory(factory.Factory):
     date = date(year=2012, month=2, day=14)
     driver_limit = 43
     
-    track = factory.LazyAttribute(lambda t: TrackFactory())
-    season = factory.LazyAttribute(lambda s: SeasonFactory())
+    track = factory.SubFactory(TrackFactory)
+    season = factory.SubFactory(SeasonFactory)
 
+class RaceParticipantFactory(factory.Factory):
+    FACTORY_FOR = RaceParticipant
+    
+    finish_position = 1
+    start_position = 1
+
+    driver = factory.SubFactory(DriverFactory)
+    race = factory.SubFactory(RaceFactory)
