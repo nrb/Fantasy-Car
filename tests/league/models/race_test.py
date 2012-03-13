@@ -1,22 +1,28 @@
 from unittest import TestCase
 
-from league.models import Race
-
+from tests.league.factories import RaceFactory, TrackFactory, SeasonFactory, SeasonFactory
 
 class RaceTest(TestCase):
     def test_create_race(self):
-        race = Race(length=500, name="Daytona 500")
+        race = RaceFactory()
         assert race.length == 500
         
     def test_race_has_drivers(self):
-        pass
-    
+        race = RaceFactory()
+        assert race.drivers
+        
     def test_race_driver_limit(self):
-        pass
-    
+        race = RaceFactory.build()
+        
+        assert race.driver_limit == 43
+
     def test_race_has_track(self):
-        pass
+        race = RaceFactory()
+        
+        assert race.track
     
     def test_race_in_season(self):
-        pass
+        race = RaceFactory()
+        
+        assert race.season
 
