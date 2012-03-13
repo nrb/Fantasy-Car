@@ -6,7 +6,10 @@ import sys
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 APPS_ROOT = os.path.join(PROJECT_ROOT, "apps")
+BASE_PATH = os.path.dirname(PROJECT_ROOT)
 
+sys.path.insert(0, BASE_PATH)
+sys.path.insert(0, PROJECT_ROOT)
 sys.path.insert(0, APPS_ROOT)
 
 DEBUG = True
@@ -139,6 +142,12 @@ INSTALLED_APPS = (
     # project
     'league',
 )
+
+TEST_DISCOVERY_ROOT = os.path.join(BASE_PATH,"tests")
+
+TEST_RUNNER = "tests.runner.DiscoveryRunner"
+
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
