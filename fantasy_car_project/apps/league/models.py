@@ -8,7 +8,7 @@ class Track(models.Model):
     name = models.CharField(max_length=80)
     city = models.CharField(max_length=80)
     # Needs to be a float.
-    length = models.IntegerField()
+    length = models.FloatField()
 
 
 class Race(models.Model):
